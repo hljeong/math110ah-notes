@@ -28,7 +28,7 @@ Recall the number systems:
 \end{itemize}
 
 \begin{defn}
-  A field $\mathbb F$ (e.g. $\mathbb Q, \mathbb R, \mathbb C$, not $\mathbb Z$) is a set with elements $0, 1 \in \mathbb F$, $0 \neq 1$, and operators $+$ (addition) and $\cdot$ (multiplication), where for all $x, y \in \mathbb F$, $x + y, x y \in \mathbb F$, such that
+  A {\boldmath \bfseries field $\mathbb F$} (e.g. $\mathbb Q, \mathbb R, \mathbb C$, not $\mathbb Z$) is a set with elements $0, 1 \in \mathbb F$, $0 \neq 1$, and operators $+$ (addition) and $\cdot$ (multiplication), where for all $x, y \in \mathbb F$, $x + y, x y \in \mathbb F$, such that
   \begin{enumerate}
     \item $+$ is associative, commutative, $0$ is its identity, and has inverses.
     That is, 
@@ -59,7 +59,7 @@ Recall the number systems:
 \end{defn}
 
 \begin{defn}
-  An ordered field (for example, $\mathbb R, \mathbb Q$, not $\mathbb C$) $\mathbb F$ is a field with a given subset $P \subset \mathbb F$ called the positive elements such that 
+  An {\boldmath \bfseries ordered field} (for example, $\mathbb R, \mathbb Q$, not $\mathbb C$) $\mathbb F$ is a field with a given subset $P \subset \mathbb F$ called the positive elements such that 
   \begin{enumerate}
     \item for all $x \in \mathbb F$, exactly one of $x \in P$, $x = 0$, $-x \in P$ is true (we say $x \in \mathbb F$ is negative if $-x \in P$), and 
 
@@ -72,9 +72,9 @@ Recall the number systems:
 \underline{\smash{\boldmath \bfseries How to use these axioms to prove inequalities}}
 
 \begin{defn}
-  For an ordered field $\mathbb F$, we say for $x, y \in \mathbb F$ that $x < y$ if $y - x = y + (-x)$ is positive (so $x$ is positive iff $x > 0$).
+  For an ordered field $\mathbb F$, we say for $x, y \in \mathbb F$ that {\boldmath \bfseries $x < y$} if $y - x = y + (-x)$ is positive (so $x$ is positive iff $x > 0$).
 
-  Likewise $x \leq y$ if $y - x$ is positive or $0$.
+  Likewise {\boldmath \bfseries $x \leq y$} if $y - x$ is positive or $0$.
 \end{defn}
 
 \begin{lem}
@@ -152,6 +152,164 @@ An example of what we can prove using this is:
   Since $P(N)$ would be true if $P(N - 1)$ were true, $P(N - 1)$ is not true.
   Then $N - 1 \in S$, a contradiction.
   Then $S = \varnothing$.
+\end{prf}
+
+\newpage
+
+\section{9.26 Monday Week 1}
+
+\begin{lem}
+  For every $x \in \mathbb R$, $0 \cdot x = 0$.
+\end{lem}
+
+\begin{prf}
+  By the distributive law, $0 = 0 + 0$, so for any $x \in \mathbb R$, we have 
+  \begin{align*}
+    0 \cdot x &= (0 + 0) \cdot x \\ 
+    0 \cdot x + (-(0 \cdot x)) &= (0 + 0) \cdot x + (-(0 \cdot x)) \\ 
+    0 &= 0 \cdot x.
+  \end{align*}
+\end{prf}
+
+\begin{lem}
+  For every $x \in \mathbb R$, $(-1) \cdot x = -x$.
+\end{lem}
+
+\begin{prf}
+  Note that $0 = 0 \cdot x = (1 + (-1)) \cdot x = 1 \cdot x + (-1) \cdot x = x + (-1) \cdot x$.
+  Adding $-x$ to both sides, we have $-x = (-1) \cdot x$.
+\end{prf}
+
+\begin{lem}
+  For any $x, y, z \in \mathbb R$ with $x \neq 0$, if $x y = x z$, then $y = z$.
+\end{lem}
+
+\begin{prf}
+  We know, since $x \neq 0$, there exists a real number $\overline x$ such that $x \left ( \frac{1}{x} \right ) = 1$.
+  Then if $x y = x z$, then $\left ( \frac{1}{x} \right ) x y = \left ( \frac{1}{x} \right ) x z$, so $1 \cdot y = 1 \cdot z$, that is, $y = z$.
+\end{prf}
+
+\underline{\smash{{\boldmath \bfseries Proving things about the integer, gcd, prime factorization}}}
+
+\begin{defn}
+  For integers $x$ and $y$, we say {\boldmath \bfseries $x \mid y$} or ``{\boldmath \bfseries $x$ divides $y$}'' or ``{\boldmath \bfseries $y$ is a multiple of $x$}'' if $\exists \, z \in \mathbb Z: x z = y$.
+  That is, if $x \neq 0$, $\frac{y}{x}$ is an integer.
+\end{defn}
+
+\underline{\smash{{\boldmath \bfseries Remark}}} For any $x \in \mathbb Z$, $1 \mid x$.
+Also, for any $x \in \mathbb Z$, $x \mid 0$ since $x \cdot 0 = 0$.
+
+Also, if $x$ is a nonzero integer then any integer $m$ with $m \mid x$ has $\left | m \right | \leq \left | x \right |$.
+
+\begin{eg}
+  The integers dividing $10 = 2 \cdot 5$ are $-10, -5, -2, -1, 1, 2, 5, 10$.
+\end{eg}
+
+\underline{\smash{{\boldmath \bfseries Remark}}} One fact about $\mathbb R$ is the Archimedean property: for every $x \in \mathbb R$, there exists an integer $y$ with $x < y$.
+It follows, by multiplying by $-1$, $\forall \, x \in \mathbb R \; \exists \, y \in \mathbb Z: y < x$.
+
+\underline{\smash{{\boldmath \bfseries Notation}}} For any $x \in \mathbb R$, $\left \lfloor x \right \rfloor :=$ the largest integer $\leq x$ and $\left \lceil x \right \rceil :=$ the smallest integer $\geq x$.
+
+This follows form well-ordering that a subset of $Z$, bounded below and not empty, has a smallest element.
+
+\begin{defn}
+  A subset $S \subset \mathbb R$ is {\boldmath \bfseries bounded below} if $\exists \, a \in \mathbb R \; \forall \, x \in S: x \geq a$.
+\end{defn}
+
+\begin{thm}[Division algorithm]
+  Let $x$ be a positive integer and $y$ any integer.
+  Then there are (unique) integers $q$ and $r$ such that $y = q x + r$, and $0 \leq r \leq x - 1$.
+\end{thm}
+
+\begin{prf}
+  Let $q = \left \lceil \frac{y}{x} \right \rceil (\in \mathbb Z)$.
+  Define $r = y - q x (\in \mathbb Z)$.
+  Clearly, $y = q x + r$.
+  Here $q \leq \frac{y}{x}$, so $q x \leq y$ (since $x > 0$), so $r \geq 0$.
+
+  Also, $q + 1 > \frac{y}{x}$.
+  So (since $x > 0$) $q x + x > y$, so $r = y - q x < x$.
+  Since $r \in \mathbb Z$, $r \leq x - 1$.
+\end{prf}
+
+\begin{defn}
+  A positive integer $p$ is {\boldmath \bfseries prime} if $p > 1$ and the only positive integers dividing $p$ are $1$ and $p$.
+\end{defn}
+
+\begin{defn}
+  For integers $x$ and $y$ not both $0$, the {\boldmath \bfseries greatest common divisor $= \gcd(x, y)$} is the largest integer that divides $x$ and $y$.
+\end{defn}
+
+That makes sense because $1 \mid x$ and $1 \mid y$, and (if $y \neq 0$), any integer dividing $y$ is $\leq \left | y \right |$.
+
+\begin{thm}[Euclid, 300 BCE]
+  For any integers $x, y$, not both $0$, there are integers $m, n$ with $\gcd(x, y) = m x + n y$.
+\end{thm}
+
+\begin{prf}
+  The hypothesis and conclusion do not change if $x$ or $y$ is multiplied by $-1$.
+  Assume $x, y \geq 0$.
+  By switching $x$ and $y$ if needed, assume $0 \leq x \leq y$ and $y > 0$ since they are not both $0$.
+
+  We prove this by induction on $y$.
+
+  For $y = 1$, we have $x = 0$ or $x = 1$, and the conclusion is true: $\gcd(0, 1) = 1 = 0 \cdot 0 + 1 \cdot 1$ and $\gcd(1, 1) = 1 = 0 \cdot 1 + 1 \cdot 1$.
+
+  Suppose now that $y \geq 2$ and the result holds for smaller $y$'s.
+  If $x = 0$ then $\gcd(0, y) = y = 0 \cdot 0 + 1 \cdot y$.
+  If $x = y$ then $\gcd(x, y) = y = 0 \cdot x + 1 \cdot y$.
+
+  Now assume $0 < x < y$.
+  Then the division algorithm gives $y = q x + r$ where $q, r \in \mathbb Z$ and $0 \leq r \leq x - 1$.
+  Then $\gcd(x, y) = \gcd(r, x)$ because an integer divides both $x$ and $y$ iff it divides $r = y - q x$.
+  Using induction, $\gcd(x, y) = \gcd(r, x) = m r + n x$ for some $m, n \in \mathbb Z$.
+  Then $\gcd(x, y) = m (y - q x) + n x = (n - m q) x + m y$.
+
+  Then induction is complete.
+\end{prf}
+
+\underline{\smash{{\boldmath \bfseries The Euclidean algorithm for the gcd}}}
+
+Let us compute $\gcd(45, 66)$.
+Here $66 = 1 \cdot 45 + 21$ where $q = 1$ and $r = 21$, so $\gcd(45, 66) = \gcd(21, 45)$.
+Next, $45 = 2 \cdot 21 + 3$, so $\gcd(21, 45) = \gcd(3, 21)$.
+Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
+
+\begin{thm}
+  Every positive integer can be written as a product of (finitely many) prime numbers $n = \prod_{i = 1} = p_1 \cdot \cdots \cdot p_r$, where $p_1, \dots, p_r$ are prime and $r \geq 0$.
+\end{thm}
+
+\begin{note}
+  By convention, $1$ is the product of $0$ prime numbers.
+\end{note}
+
+\begin{prf}
+  We use induction on $n \in \mathbb Z^+$.
+
+  The theorem is true for $n = 1$.
+
+  Suppose that $n > 1$ and that the theorem holds for smaller positive integers.
+  If $n$ is prime, we are done.
+  Otherwise, there is an integer $m$, $1 < m < n$, with $m \mid n$.
+  Then both $m$ and $\frac{n}{m}$ are positive integers $< n$.
+  So they are both products of primes.
+  So $n = m \left ( \frac{n}{m} \right )$ is a product of primes.
+\end{prf}
+
+\begin{lem}
+  If a prime number $p$ divides the product $m n$ of integers, then $p \mid m$ or $p \mid n$.
+\end{lem}
+
+\begin{prf}
+  Suppose that $p \mid m n$ and $p \nmid m$.
+  We want to show that $p \mid n$.
+
+  Since $p \nmid m$, $\gcd(p, m) = 1$.
+  So by Euclidean algorithm, we write $1 = p u + m v$ for some integers $u, v$.
+
+  We can also write $m n = p w$ for some $w \in \mathbb Z$.
+  So, multiplying $1 = p u + m v$ by $n$, we have $n = n p u + m n v = p (n u + w v)$.
+  So $p \mid n$.
 \end{prf}
 
 \end{document}
