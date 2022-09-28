@@ -312,4 +312,137 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
   So $p \mid n$.
 \end{prf}
 
+\newpage
+
+\section{9.28 Wednesday Week 1}
+
+\begin{thm}[Unique factorization of integers, Euclid  ]
+  Every positive integer $n$ can be written \textit{uniquely} as a product of prime numbers, that is, $n = \prod_{i = 1}^r p_i$ where $p_1, \dots p_r$ are prime.
+  The uniqueness is up to reordering of the $p_i$'s.
+\end{thm}
+
+\begin{prf}
+  We use (from last time) if a prime number $p$ divides $m n$ (for some $m, n \in \mathbb Z$), then $p \mid m$ or $p \mid n$.
+  We showed existence of a prime factorization of $n \in \mathbb Z^+$.
+  
+  For uniqueness: suppose $n = \prod_{i = 1}^r p_i = \prod_{i = 1}^s q_i$ with $p_i$'s and $q_i$'s all prime and $r, s \geq 0$.
+
+  If $r = 0$, then $n = 1$.
+  Then $s = 0$: a product of $\geq 1$ prime number is $\geq 2$ since each prime is $\geq 2$.
+
+  Otherwise, $r > 0$.
+  Then $p_1$ makes sense and it is prime.
+  Then $p_1$ divides $n = \prod_{i = 1}^s q_i$.
+  By previous result, $p_1$ must divide $q_i$ for some $1 \leq i \leq s$.
+  By reordering the $q_i$'s, we can assume that $i = 1$.
+  Since $q_i$ is prime and $p_1 > 1$, we must have $p_1 = q_1$.
+  Then 
+  \[
+    p_1 \left ( \prod_{i = 2}^r p_i \right ) = q_1 \left ( \prod_{i = 2}^s q_i \right ) = p_1 \left ( \prod_{i = 2}^s q_i \right ).
+  \]
+  Since $p_1 \neq 0$, it follows that $\prod_{i = 2}^r p_i = \prod_{i = 2}^s q_i$.
+
+  That finishes the proof, by induction on $r$.
+\end{prf}
+
+\underline{\smash{{\boldmath \bfseries Equivalence relations}}}
+
+\begin{defn}
+  The {\boldmath \bfseries product} of two sets $A$ and $B$, $A \times B$, is the set of ordered pairs $(a, b)$ where $a \in A$ and $b \in B$.
+  Here $(a_1, b_1) = (a_2, b_2)$ iff $a_1 = a_2$ and $b_1 = b_2$.
+
+  $\left | A \times B \right | = \left | A \right | \left | B \right |$ if $A, B$ are finite sets.
+\end{defn}
+
+\begin{defn}
+  A {\boldmath \bfseries relation} of a set $A$ with a set $B$ is a subset $R \subseteq A \times B$.
+  We write $a R b$ to mean that $(a, b) \in R$.
+\end{defn}
+
+\begin{eg}
+  A function $f \colon A \to B$ determines a relation, the {\boldmath \bfseries graph} $R = \left \{ (a, f(a)) : a \in A \right \}$.
+\end{eg}
+
+\begin{defn}
+  An {\boldmath \bfseries equivalence relation} on a set $A$ is a relation $R \subseteq A \times A$ such that it is
+  \begin{enumerate}
+    \item reflexive ($\forall \, a \in A: a R a$), 
+
+    \item symmetric ($\forall \, a, b \in A: a R b \Rightarrow b R a$), and 
+
+    \item transitive ($\forall \, a, b, c \in A: a R b \wedge b R c \Rightarrow a R c$).
+  \end{enumerate}
+\end{defn}
+
+\begin{eg}
+  For any set $A$, {\boldmath \bfseries equality} is an equivalence relation on $A$.
+\end{eg}
+
+\begin{eg}
+  Triangles in $\mathbb R^2$ under {\boldmath \bfseries congruence} (studied by Euclid): we say that a triangle $a$ is ``congruent'' to triangle $b$ if there is an {\boldmath \bfseries isometry} $f \colon \mathbb R^2 \to \mathbb R^2$ that maps $a$ to $b$.
+\end{eg}
+
+\begin{eg}
+  The relation on $\mathbb Z \times \left \{ \mathbb Z \setminus \left \{ 0 \right \} \right \}$ given by $(a, b) \sim (c, d)$ if $a d = b c$.
+  In fact this relation is equivalent to $\frac{a}{b} = \frac{c}{d} \in \mathbb Q$.
+  This equivalence relation ``ensures'' that $\frac{1}{3} = \frac{2}{6} = \frac{3}{9} = \cdots$.
+  It is a way to constructing $\mathbb Q$ from $\mathbb Z$.
+\end{eg}
+
+\begin{defn}
+  Let $\sim$ be an equivalence relation on a set $A$.
+  For each element $a$ let {\boldmath \bfseries $\overline a$} or {\boldmath \bfseries $[a]$}, the {\boldmath \bfseries equivalence class of $a$}, be the set $\left \{ b \in A : a \sim b \right \} (\subseteq A)$.
+
+  Let $\overline A$ be the set of subsets of $A$ of the form $\overline a$ for some $a \in A$.
+  $\overline A$, or $A/\sim$, is called the set of {\boldmath \bfseries equivalence classes for $\sim$}.
+
+  Define a function $f \colon A \to \overline A$ (depending on $\sim$) by $f(a) = \overline a \in \overline A$.
+  This is the {\boldmath \bfseries natural} or {\boldmath \bfseries canonical surjection} associated to $\sim$.
+\end{defn}
+
+\begin{eg}
+  For the relation from Example~\ref{eg:3.8} on $\mathbb Z \times (\mathbb Z \setminus \left \{ 0 \right \})$ $A$, we can define $\mathbb Q = A/\sim$.
+\end{eg}
+
+\begin{eg}
+  Define an equivalence relation on $\mathbb Z$ by $a \sim b$ if $a - b$ is even.
+  Some equivalence classes are 
+  \begin{align*}
+    \overline 0 &= \left \{ b \in \mathbb Z : 0 \sim b \right \} = \left \{ \dots, -4, -2, 0, 2, 4, \dots \right \} \\ 
+    \overline 1 &= \left \{ \dots, -3, -1, 1, 3, \dots \right \} \\ 
+    \overline 5 &= \overline 1.
+  \end{align*}
+\end{eg}
+
+\begin{defn}
+  $\mathbb Z/2 := \mathbb Z/\sim$ for the relation in Example~\ref{eg:3.11}.
+  Note that this set has exactly 2 elements.
+\end{defn}
+
+\begin{prop}
+  Let $\sim$ be an equivalence relation on a set $A$.
+  Then $A = \bigsqcup_{u \in \overline A} u$.
+\end{prop}
+
+\begin{prf}
+  First we show that $A = \bigcup_{u \in \overline A} u$.
+  For each $u \in \overline A$, $u$ is a subset of $\overline A$.
+  Then $\bigcup_{u \in \overline A} u \subseteq A$.
+  Conversely let $a \in A$.
+  Then $a \in \overline a$ by reflexivity of $\sim$.
+  So $A = \bigcup_{u \in \overline A} u$.
+
+  Next we show that given $u, b \in \overline A$, if $u \neq v$ then $u \cap v = \varnothing$.
+  Equivalently, we show that if $u, v \in \overline A$ and $u \cap v \neq \varnothing$ then $u = v$.
+  The assumption means that there is an element $a \in A$ such that $a \in u$ and $a \in v$.
+  By definition of $\overline A$, $u = \overline b$ and $v = \overline c$ for some $b, c \in A$.
+  Since $a \in u = \overline b$ and $a \in v = \overline c$, $b \sim a$ and $c \sim a$.
+  By symmetry and transitivity, $b \sim a \sim c \Rightarrow b \sim c$.
+  
+  To show that $\overline b = \overline c$, pick any element $e \in \overline b$, that is, $b \sim e$, $c \sim b \sim e$ so $c \sim e$.
+  Then $e \in \overline c$.
+  The same proof shows that any element in $\overline c$ is also in $\overline b$.
+  Then $\overline b = u = v = \overline c$.
+\end{prf}
+
 \end{document}
