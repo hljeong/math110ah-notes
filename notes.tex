@@ -196,8 +196,10 @@ An example of what we can prove using this is:
   That is, if $x \neq 0$, $\frac{y}{x}$ is an integer.
 \end{defn}
 
-\underline{\smash{{\boldmath \bfseries Remark}}} For any $x \in \mathbb Z$, $1 \mid x$.
-Also, for any $x \in \mathbb Z$, $x \mid 0$ since $x \cdot 0 = 0$.
+\begin{rmk}
+  For any $x \in \mathbb Z$, $1 \mid x$.
+  Also, for any $x \in \mathbb Z$, $x \mid 0$ since $x \cdot 0 = 0$.
+\end{rmk}
 
 Also, if $x$ is a nonzero integer then any integer $m$ with $m \mid x$ has $\left | m \right | \leq \left | x \right |$.
 
@@ -205,8 +207,10 @@ Also, if $x$ is a nonzero integer then any integer $m$ with $m \mid x$ has $\lef
   The integers dividing $10 = 2 \cdot 5$ are $-10, -5, -2, -1, 1, 2, 5, 10$.
 \end{eg}
 
-\underline{\smash{{\boldmath \bfseries Remark}}} One fact about $\mathbb R$ is the Archimedean property: for every $x \in \mathbb R$, there exists an integer $y$ with $x < y$.
-It follows, by multiplying by $-1$, $\forall \, x \in \mathbb R \; \exists \, y \in \mathbb Z: y < x$.
+\begin{rmk}
+  One fact about $\mathbb R$ is the Archimedean property: for every $x \in \mathbb R$, there exists an integer $y$ with $x < y$.
+  It follows, by multiplying by $-1$, $\forall \, x \in \mathbb R \; \exists \, y \in \mathbb Z: y < x$.
+\end{rmk}
 
 \underline{\smash{{\boldmath \bfseries Notation}}} For any $x \in \mathbb R$, $\left \lfloor x \right \rfloor :=$ the largest integer $\leq x$ and $\left \lceil x \right \rceil :=$ the smallest integer $\geq x$.
 
@@ -415,7 +419,7 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \end{eg}
 
 \begin{defn}
-  $\mathbb Z/2 := \mathbb Z/\sim$ for the relation in Example~\ref{eg:3.11}.
+  $\mathbb Z / 2 := \mathbb Z / \sim$ for the relation in Example~\ref{eg:3.11}.
   Note that this set has exactly 2 elements.
 \end{defn}
 
@@ -444,5 +448,186 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
   The same proof shows that any element in $\overline c$ is also in $\overline b$.
   Then $\overline b = u = v = \overline c$.
 \end{prf}
+
+\newpage
+
+\section{9.30 Friday Week 1}
+
+\underline{\smash{{\boldmath \bfseries Modular arithmetic (Elman section 6)}}}
+
+\begin{defn}
+  Let $m \in \mathbb Z^+$, $a, b \in \mathbb Z$.
+  We say {\boldmath \bfseries $a$ is congruent to $b$ modulo $m$}, or $a \equiv b (\mathrm{mod}\ m)$, if $m \mid (a - b)$.
+
+  For each $m \in \mathbb Z^+$, this is an equivalence relation on $\mathbb Z$.
+  Given that we can define (given $m \in \mathbb Z^+$), for $a \in \mathbb Z$, 
+  \begin{align*}
+    \overline a &= [a]_n \\ 
+    &= \left \{ x \in \mathbb Z : x \equiv a (\mathrm{mod}\ m) \right \} \\ 
+    &= \left \{ a + k m : k \in \mathbb Z \right \}
+  \end{align*}
+  is called the {\boldmath \bfseries residue class} of $a$ modulo $m$.
+  This subset is most often called $a + m \mathbb Z$.
+\end{defn}
+
+\begin{eg}
+  \begin{align*}
+    \overline 0 &= 0 + m \mathbb Z = m \mathbb Z \\ 
+    &= \left \{ \dots, -2 m, -m, 0, m, 2 m, \dots \right \}
+  \end{align*}
+\end{eg}
+
+\begin{prop}
+  For $m \in \mathbb Z^+$, congruence mod $m$ is an equivalence relation on $\mathbb Z$.
+\end{prop}
+
+\begin{prf}
+  Reflexive: To show that for any $a \in \mathbb Z$, $a \equiv a (\mathrm{mod}\ m)$, that is $m \mid (a - a)$.
+  Here $0 \cdot m = 0 = a - a$.
+
+  Symmetric: To show that for any integers $a, b \in \mathbb Z$, if $a \equiv b (\mathrm{mod}\ m)$, then $b \equiv a (\mathrm{mod}\ m)$.
+  That is, if $m \mid (a - b)$, then $m \mid (b - a)$.
+  Indeed, $\exists \, x \in \mathbb Z / m: x = a - b$, then $m (-x) = b - a$.
+
+  Transitive: To show that for $a, b, c \in \mathbb Z$, if $a \equiv b (\mathrm{mod}\ m)$ and $b \equiv c (\mathrm{mod}\ m)$ then $a \equiv c (\mathrm{mod}\ m)$.
+  That is, we are given that $m \mid (a - b)$ and $m \mid (b - c)$.
+  Here $a - c = (a - b) + (b - c)$, so $m \mid (a - c)$.
+  Indeed, if $a - b = x m$ and $b - c = y m$, then $a - c = (x + y) m$ and $x + y \in \mathbb Z$.
+\end{prf}
+
+\begin{defn}
+  For $m \in \mathbb Z^+$, let $\mathbb Z / m$ be the set of equivalence classes $\mathbb Z / (\equiv (\mathrm{mod}\ m))$.
+
+  This concept was emphasized by Gauss circa 1800.
+\end{defn}
+
+\begin{prop}
+  The set $\mathbb Z / m$ has exactly $m$ elements.
+
+  Explicitly: $\mathbb Z / m = \left \{ \overline 0, \overline 1, \dots, \overline{m - 1} \right \}$ and those $m$ elements of $\mathbb Z / m$ are all different.
+
+  Equivalently: $\mathbb Z$ is the \textit{disjoint} union of the subsets $\overline 0, \overline 1, \dots, \overline{m - 1}$.
+\end{prop}
+
+\begin{prf}
+  By the division algorithm, for any $a \in \mathbb Z$, we can write (uniquely) $a = q m + r$ with $q \in \mathbb Z$, and $r \in \mathbb Z$ with $0 \leq r \leq m - 1$.
+  So every integer is equivalent to an integer $\left \{ 0, 1, \dots, m - 1 \right \}$.
+
+  Suppose that $a, b \in \left \{ 0, 1, \dots, m - 1 \right \}$ with $a \equiv b (\mathrm{mod}\ m)$.
+  Then $m \mid (a - b)$.
+  If $a \neq b$, then $a - b \neq 0$, then $\left | m \right | \leq \left | a - b \right |$, resulting in a contradiction.
+\end{prf}
+
+\begin{prop}
+  Let $a, b, c, d \in \mathbb Z$ and $m \in \mathbb Z^+$.
+  If $a \equiv b (\mathrm{mod}\ m)$ and $c \equiv d (\mathrm{mod}\ m)$, then $a + c \equiv b + d (\mathrm{mod}\ m)$ and $a c \equiv b d (\mathrm{mod}\ m)$.
+\end{prop}
+
+\begin{prf}
+  \textit{Exercise on homework 2.}
+\end{prf}
+
+\begin{cor}
+  $+$ and $\cdot$ are well-defined operations on $\mathbb Z / m$, that is, we have functions $+ \colon \mathbb Z / m \times \mathbb Z / m \to \mathbb Z / m$ and $\cdot \colon \mathbb Z / m \times \mathbb Z / m \to \mathbb Z / m$ given by $\overline a + \overline b = \overline{a + b}$ and $\overline a \cdot \overline b = \overline{a \cdot b}$.
+  (We often write $0 \in \mathbb Z / m$ to mean $\overline 0$ and $1$ to mean $\overline 1$.)
+\end{cor}
+
+\begin{defn}
+  A {\boldmath \bfseries commutative ring} $R$ is a set with given elements $0 \in R$ and $1 \in R$ and functions $+ \colon R \times R \to R$ and $\cdot \colon R \times R \to R$ such that 
+  \begin{enumerate}
+    \item $+$ is associative, commutative, has $0$ as its identity, and has additive inverses, 
+
+    \item $\cdot$ is associative, commutative, and has $1$ as its identity, and 
+
+    \item are distributive: $\forall \, a, b, c \in R: a (b + c) = a b + a c$.
+  \end{enumerate}
+\end{defn}
+
+\begin{rmk}
+  A {\boldmath \bfseries field} is a commutative ring $R$ such that $1 \neq 0 \in R$, and $\forall \, x \in R: x \neq 0 \Rightarrow \exists \, y \in \mathbb Z: x y = 1$.
+\end{rmk}
+
+\begin{eg}
+  Every field (\textit{e.g.}, $\mathbb Q$, $\mathbb R$, or $\mathbb C$) is a commutative ring.
+\end{eg}
+
+\begin{eg}
+  $\mathbb Z$ is a commutative ring but \textit{not} a field.
+\end{eg}
+
+\begin{eg}
+  For any $m \in \mathbb Z^+$, $\mathbb Z / m$ is a commutative ring with the operations $+$ and $\cdot$ that we defined.
+\end{eg}
+
+\begin{eg}
+  For any commutative ring $R$, the set of polynomials $R[x]$ is also a commutative ring.
+  Here an element of $R[x]$ is an expression $a_0 + a_1 x + \cdots + a_n x^n$ for some $n \in \mathbb N = \left \{ 0, 1, 2, \dots \right \}$ and $a_0, \dots, a_n \in R$.
+  $+$ and $\cdot$ are defined as expected.
+\end{eg}
+
+\begin{defn}
+  For a commutative ring $R$, the set of {\boldmath \bfseries units} in $R$ is $R^* := \left \{ a \in R : \exists \, x \in R: a x = 1 \right \}$.
+\end{defn}
+
+\begin{eg}
+  The {\boldmath \bfseries zero ring} is the ring $\left \{ 0 \right \}$ with 1 element.
+  Then $1 = 0$ in this ring.
+  This is ``isomorphic'' to the ring $\mathbb Z / 1$.
+\end{eg}
+
+\newpage
+
+\begin{lem}
+  For any $m \in \mathbb Z^+$, $(\mathbb Z / m)^* = \left \{ \overline a : a \in \mathbb Z \wedge \underbrace{\gcd(a, m) = 1}_\text{``$a$ and $m$ are {\boldmath \bfseries relatively prime} or {\boldmath \bfseries coprime}''} \right \}$.
+\end{lem}
+
+\begin{prf}
+  Let $\overline a \in (\mathbb Z / m)^*$.
+  That means that $\exists \, x \in \mathbb Z: a x \equiv 1 (\mathrm{mod}\ m)$.
+  That is, $m \mid (a x - 1)$.
+  So $\exists \, y \in \mathbb Z: a x - 1 = m y$.
+  This implies that if $g = \gcd(a, m)$, then $g \mid 1$.
+  So $g = 1$.
+
+  Let $a \in \mathbb Z$ with $\gcd(a, m) = 1$.
+  We want to show that $\overline a$ is a unit in $\mathbb Z / m$.
+  That is, we want to find $x \in \mathbb Z$ such that $a x \equiv 1 (\mathrm{mod}\ m)$.
+  We know (by Euclid) that we can write $1 = u a + v m$ for some $u, v \in \mathbb Z$.
+  So $u a \equiv 1 (\mathrm{mod}\ m)$.
+\end{prf}
+
+\begin{cor}
+  For any prime number $p$, the ring $\mathbb Z / p$ is a {\boldmath \bfseries field}.
+\end{cor}
+
+\begin{prf}
+  $1 \nequiv 0 (\mathrm{mod}\ p)$ (since $p \geq 2$) and for every $x \in 1, 2, \dots, p - 1$, we have $\gcd(x, p) = 1$, so $x$ is \textit{invertible} in $\mathbb Z / p$.
+\end{prf}
+
+\begin{rmk}
+  We most oftenly write ``$5 \in \mathbb Z / 7$'' to mean $\overline 5 \in \mathbb Z / 7$.
+  So, for example, ``$5 = 12$ \textit{in the field $\mathbb Z / 7$.}''
+\end{rmk}
+
+\begin{eg}
+  What is $\frac{1}{2} \in \mathbb Z / 7$?
+
+  This makes sense because $2 \neq 0$ in $\mathbb Z / 7$, and $\mathbb Z / 7$ is a field.
+  We have $\frac{1}{2} = 4$ in $\mathbb Z / 7$, since $4 \cdot 2 = 8 = 1 \in \mathbb Z / 7$.
+\end{eg}
+
+\begin{thm}[Chinese remainder theorem (Sun-Tzu, 3rd century CE; Aryabhata, 6th century CE)]
+  Let $m_1, \dots, m_r$ be positive integers that are \textit{pairwise coprime} (that is, if $i \neq j$ then $\gcd(m_i, m_j) = 1$).
+  Let $c_1, \dots, c_r \in \mathbb Z$.
+  Then there is an integer $x$ such that $x \equiv c_1 (\mathrm{mod}\ m_1)$, \dots, and $x \equiv c_r (\mathrm{mod}\ m_r)$.
+
+  Moreover, $x$ is unique modulo $\prod m_i$ (\textit{i.e.}, if $y$ is any integer satisfyingthe same $r$ congruences, then $x \equiv y (\mathrm{mod}\ m_1 \cdots m_r)$).
+\end{thm}
+
+\begin{cor}
+  For positve integers $m_1, \dots, m_r$ that are pairwise coprime, there is a one-to-one correspondence $\mathbb Z / m \overset{\longrightarrow}{\simeq} (\mathbb Z / m_1) \times \cdots \times (\mathbb Z / m_r)$: $\overline a \mapsto (\overline a, \dots, \overline a)$.
+
+  So we can mostly reduce studying $\mathbb Z / p_1^{e_1} \cdots p_r^{e_r}$ (with $p_1, \dots, p_r$ are \textit{distinct} primes, $e_1, \dots, e_r \geq 1$) to the ring $\mathbb Z / p_1^{e_1}, \dots, \mathbb Z / p_r^{e_r}$
+\end{cor}
 
 \end{document}
