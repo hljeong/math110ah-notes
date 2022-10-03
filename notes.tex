@@ -192,16 +192,16 @@ An example of what we can prove using this is:
 \underline{\smash{{\boldmath \bfseries Proving things about the integer, gcd, prime factorization}}}
 
 \begin{defn}
-  For integers $x$ and $y$, we say {\boldmath \bfseries $x \mid y$} or ``{\boldmath \bfseries $x$ divides $y$}'' or ``{\boldmath \bfseries $y$ is a multiple of $x$}'' if $\exists \, z \in \mathbb Z: x z = y$.
+  For integers $x$ and $y$, we say {\boldmath \bfseries $x \vert y$} or ``{\boldmath \bfseries $x$ divides $y$}'' or ``{\boldmath \bfseries $y$ is a multiple of $x$}'' if $\exists \, z \in \mathbb Z: x z = y$.
   That is, if $x \neq 0$, $\frac{y}{x}$ is an integer.
 \end{defn}
 
 \begin{rmk}
-  For any $x \in \mathbb Z$, $1 \mid x$.
-  Also, for any $x \in \mathbb Z$, $x \mid 0$ since $x \cdot 0 = 0$.
+  For any $x \in \mathbb Z$, $1 \vert x$.
+  Also, for any $x \in \mathbb Z$, $x \vert 0$ since $x \cdot 0 = 0$.
 \end{rmk}
 
-Also, if $x$ is a nonzero integer then any integer $m$ with $m \mid x$ has $\left | m \right | \leq \left | x \right |$.
+Also, if $x$ is a nonzero integer then any integer $m$ with $m \vert x$ has $\left | m \right | \leq \left | x \right |$.
 
 \begin{eg}
   The integers dividing $10 = 2 \cdot 5$ are $-10, -5, -2, -1, 1, 2, 5, 10$.
@@ -244,7 +244,7 @@ This follows form well-ordering that a subset of $Z$, bounded below and not empt
   For integers $x$ and $y$ not both $0$, the {\boldmath \bfseries greatest common divisor $= \gcd(x, y)$} is the largest integer that divides $x$ and $y$.
 \end{defn}
 
-That makes sense because $1 \mid x$ and $1 \mid y$, and (if $y \neq 0$), any integer dividing $y$ is $\leq \left | y \right |$.
+That makes sense because $1 \vert x$ and $1 \vert y$, and (if $y \neq 0$), any integer dividing $y$ is $\leq \left | y \right |$.
 
 \begin{thm}[Euclid, 300 BCE]
   For any integers $x, y$, not both $0$, there are integers $m, n$ with $\gcd(x, y) = m x + n y$.
@@ -294,26 +294,28 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 
   Suppose that $n > 1$ and that the theorem holds for smaller positive integers.
   If $n$ is prime, we are done.
-  Otherwise, there is an integer $m$, $1 < m < n$, with $m \mid n$.
+  Otherwise, there is an integer $m$, $1 < m < n$, with $m \vert n$.
   Then both $m$ and $\frac{n}{m}$ are positive integers $< n$.
   So they are both products of primes.
   So $n = m \left ( \frac{n}{m} \right )$ is a product of primes.
 \end{prf}
 
 \begin{lem}
-  If a prime number $p$ divides the product $m n$ of integers, then $p \mid m$ or $p \mid n$.
+  If a prime number $p$ divides the product $m n$ of integers, then $p \vert m$ or $p \vert n$.
 \end{lem}
 
 \begin{prf}
-  Suppose that $p \mid m n$ and $p \nmid m$.
-  We want to show that $p \mid n$.
+  % todo
+  Suppose that $p \vert m n$ and $p \not \vert m$.
+  We want to show that $p \vert n$.
 
-  Since $p \nmid m$, $\gcd(p, m) = 1$.
+  % todo
+  Since $p \not \vert m$, $\gcd(p, m) = 1$.
   So by Euclidean algorithm, we write $1 = p u + m v$ for some integers $u, v$.
 
   We can also write $m n = p w$ for some $w \in \mathbb Z$.
   So, multiplying $1 = p u + m v$ by $n$, we have $n = n p u + m n v = p (n u + w v)$.
-  So $p \mid n$.
+  So $p \vert n$.
 \end{prf}
 
 \newpage
@@ -326,7 +328,7 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \end{thm}
 
 \begin{prf}
-  We use (from last time) if a prime number $p$ divides $m n$ (for some $m, n \in \mathbb Z$), then $p \mid m$ or $p \mid n$.
+  We use (from last time) if a prime number $p$ divides $m n$ (for some $m, n \in \mathbb Z$), then $p \vert m$ or $p \vert n$.
   We showed existence of a prime factorization of $n \in \mathbb Z^+$.
   
   For uniqueness: suppose $n = \prod_{i = 1}^r p_i = \prod_{i = 1}^s q_i$ with $p_i$'s and $q_i$'s all prime and $r, s \geq 0$.
@@ -457,13 +459,13 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 
 \begin{defn}
   Let $m \in \mathbb Z^+$, $a, b \in \mathbb Z$.
-  We say {\boldmath \bfseries $a$ is congruent to $b$ modulo $m$}, or $a \equiv b (\mathrm{mod}\ m)$, if $m \mid (a - b)$.
+  We say {\boldmath \bfseries $a$ is congruent to $b$ modulo $m$}, or $a \equiv b\ (\mathrm{mod}\ m)$, if $m \vert (a - b)$.
 
   For each $m \in \mathbb Z^+$, this is an equivalence relation on $\mathbb Z$.
   Given that we can define (given $m \in \mathbb Z^+$), for $a \in \mathbb Z$, 
   \begin{align*}
     \overline a &= [a]_n \\ 
-    &= \left \{ x \in \mathbb Z : x \equiv a (\mathrm{mod}\ m) \right \} \\ 
+    &= \left \{ x \in \mathbb Z : x \equiv a\ (\mathrm{mod}\ m) \right \} \\ 
     &= \left \{ a + k m : k \in \mathbb Z \right \}
   \end{align*}
   is called the {\boldmath \bfseries residue class} of $a$ modulo $m$.
@@ -482,21 +484,21 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \end{prop}
 
 \begin{prf}
-  Reflexive: To show that for any $a \in \mathbb Z$, $a \equiv a (\mathrm{mod}\ m)$, that is $m \mid (a - a)$.
+  Reflexive: To show that for any $a \in \mathbb Z$, $a \equiv a\ (\mathrm{mod}\ m)$, that is $m \vert (a - a)$.
   Here $0 \cdot m = 0 = a - a$.
 
-  Symmetric: To show that for any integers $a, b \in \mathbb Z$, if $a \equiv b (\mathrm{mod}\ m)$, then $b \equiv a (\mathrm{mod}\ m)$.
-  That is, if $m \mid (a - b)$, then $m \mid (b - a)$.
+  Symmetric: To show that for any integers $a, b \in \mathbb Z$, if $a \equiv b\ (\mathrm{mod}\ m)$, then $b \equiv a\ (\mathrm{mod}\ m)$.
+  That is, if $m \vert (a - b)$, then $m \vert (b - a)$.
   Indeed, $\exists \, x \in \mathbb Z / m: x = a - b$, then $m (-x) = b - a$.
 
-  Transitive: To show that for $a, b, c \in \mathbb Z$, if $a \equiv b (\mathrm{mod}\ m)$ and $b \equiv c (\mathrm{mod}\ m)$ then $a \equiv c (\mathrm{mod}\ m)$.
-  That is, we are given that $m \mid (a - b)$ and $m \mid (b - c)$.
-  Here $a - c = (a - b) + (b - c)$, so $m \mid (a - c)$.
+  Transitive: To show that for $a, b, c \in \mathbb Z$, if $a \equiv b\ (\mathrm{mod}\ m)$ and $b \equiv c\ (\mathrm{mod}\ m)$ then $a \equiv c\ (\mathrm{mod}\ m)$.
+  That is, we are given that $m \vert (a - b)$ and $m \vert (b - c)$.
+  Here $a - c = (a - b) + (b - c)$, so $m \vert (a - c)$.
   Indeed, if $a - b = x m$ and $b - c = y m$, then $a - c = (x + y) m$ and $x + y \in \mathbb Z$.
 \end{prf}
 
 \begin{defn}
-  For $m \in \mathbb Z^+$, let $\mathbb Z / m$ be the set of equivalence classes $\mathbb Z / (\equiv (\mathrm{mod}\ m))$.
+  For $m \in \mathbb Z^+$, let $\mathbb Z / m$ be the set of equivalence classes $\mathbb Z / (\equiv\ (\mathrm{mod}\ m))$.
 
   This concept was emphasized by Gauss circa 1800.
 \end{defn}
@@ -513,14 +515,14 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
   By the division algorithm, for any $a \in \mathbb Z$, we can write (uniquely) $a = q m + r$ with $q \in \mathbb Z$, and $r \in \mathbb Z$ with $0 \leq r \leq m - 1$.
   So every integer is equivalent to an integer $\left \{ 0, 1, \dots, m - 1 \right \}$.
 
-  Suppose that $a, b \in \left \{ 0, 1, \dots, m - 1 \right \}$ with $a \equiv b (\mathrm{mod}\ m)$.
-  Then $m \mid (a - b)$.
+  Suppose that $a, b \in \left \{ 0, 1, \dots, m - 1 \right \}$ with $a \equiv b\ (\mathrm{mod}\ m)$.
+  Then $m \vert (a - b)$.
   If $a \neq b$, then $a - b \neq 0$, then $\left | m \right | \leq \left | a - b \right |$, resulting in a contradiction.
 \end{prf}
 
 \begin{prop}
   Let $a, b, c, d \in \mathbb Z$ and $m \in \mathbb Z^+$.
-  If $a \equiv b (\mathrm{mod}\ m)$ and $c \equiv d (\mathrm{mod}\ m)$, then $a + c \equiv b + d (\mathrm{mod}\ m)$ and $a c \equiv b d (\mathrm{mod}\ m)$.
+  If $a \equiv b\ (\mathrm{mod}\ m)$ and $c \equiv d\ (\mathrm{mod}\ m)$, then $a + c \equiv b + d\ (\mathrm{mod}\ m)$ and $a c \equiv b d\ (\mathrm{mod}\ m)$.
 \end{prop}
 
 \begin{prf}
@@ -583,17 +585,17 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 
 \begin{prf}
   Let $\overline a \in (\mathbb Z / m)^*$.
-  That means that $\exists \, x \in \mathbb Z: a x \equiv 1 (\mathrm{mod}\ m)$.
-  That is, $m \mid (a x - 1)$.
+  That means that $\exists \, x \in \mathbb Z: a x \equiv 1\ (\mathrm{mod}\ m)$.
+  That is, $m \vert (a x - 1)$.
   So $\exists \, y \in \mathbb Z: a x - 1 = m y$.
-  This implies that if $g = \gcd(a, m)$, then $g \mid 1$.
+  This implies that if $g = \gcd(a, m)$, then $g \vert 1$.
   So $g = 1$.
 
   Let $a \in \mathbb Z$ with $\gcd(a, m) = 1$.
   We want to show that $\overline a$ is a unit in $\mathbb Z / m$.
-  That is, we want to find $x \in \mathbb Z$ such that $a x \equiv 1 (\mathrm{mod}\ m)$.
+  That is, we want to find $x \in \mathbb Z$ such that $a x \equiv 1\ (\mathrm{mod}\ m)$.
   We know (by Euclid) that we can write $1 = u a + v m$ for some $u, v \in \mathbb Z$.
-  So $u a \equiv 1 (\mathrm{mod}\ m)$.
+  So $u a \equiv 1\ (\mathrm{mod}\ m)$.
 \end{prf}
 
 \begin{cor}
@@ -601,7 +603,7 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \end{cor}
 
 \begin{prf}
-  $1 \nequiv 0 (\mathrm{mod}\ p)$ (since $p \geq 2$) and for every $x \in 1, 2, \dots, p - 1$, we have $\gcd(x, p) = 1$, so $x$ is \textit{invertible} in $\mathbb Z / p$.
+  $1 \nequiv 0\ (\mathrm{mod}\ p)$ (since $p \geq 2$) and for every $x \in 1, 2, \dots, p - 1$, we have $\gcd(x, p) = 1$, so $x$ is \textit{invertible} in $\mathbb Z / p$.
 \end{prf}
 
 \begin{rmk}
@@ -619,9 +621,9 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \begin{thm}[Chinese remainder theorem (Sun-Tzu, 3rd century CE; Aryabhata, 6th century CE)]
   Let $m_1, \dots, m_r$ be positive integers that are \textit{pairwise coprime} (that is, if $i \neq j$ then $\gcd(m_i, m_j) = 1$).
   Let $c_1, \dots, c_r \in \mathbb Z$.
-  Then there is an integer $x$ such that $x \equiv c_1 (\mathrm{mod}\ m_1)$, \dots, and $x \equiv c_r (\mathrm{mod}\ m_r)$.
+  Then there is an integer $x$ such that $x \equiv c_1\ (\mathrm{mod}\ m_1)$, \dots, and $x \equiv c_r\ (\mathrm{mod}\ m_r)$.
 
-  Moreover, $x$ is unique modulo $\prod m_i$ (\textit{i.e.}, if $y$ is any integer satisfyingthe same $r$ congruences, then $x \equiv y (\mathrm{mod}\ m_1 \cdots m_r)$).
+  Moreover, $x$ is unique modulo $\prod m_i$ (\textit{i.e.}, if $y$ is any integer satisfyingthe same $r$ congruences, then $x \equiv y\ (\mathrm{mod}\ m_1 \cdots m_r)$).
 \end{thm}
 
 \begin{cor}
@@ -629,5 +631,179 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 
   So we can mostly reduce studying $\mathbb Z / p_1^{e_1} \cdots p_r^{e_r}$ (with $p_1, \dots, p_r$ are \textit{distinct} primes, $e_1, \dots, e_r \geq 1$) to the ring $\mathbb Z / p_1^{e_1}, \dots, \mathbb Z / p_r^{e_r}$
 \end{cor}
+
+\newpage
+
+\section{10.3 Monday Week 2}
+
+\underline{\smash{{\boldmath \bfseries Frequently asked question}}}
+
+{\boldmath \bfseries Q.} \textit{The ring $\mathbb Z / m$??}
+
+{\boldmath \bfseries A.} This is $\mathbb Z$, but with some integers made equal to others.
+
+\begin{eg}
+  What is $\frac{1}{2} \in \mathbb Z / 17$ (a field, since $17$ is prime)?
+
+  $9$, since $2 \cdot 9 = 18 = 1 \in \mathbb Z / 17$.
+\end{eg}
+
+{\boldmath \bfseries Notation}: Sometimes we write $(a, b) := \gcd(a, b)$ for some $a, b \in \mathbb Z$.
+
+\begin{lem}
+  Let $m, n, a_1, \dots, a_r$ be integers.
+
+  \begin{enumerate}
+    \item If $(a_i, m) = 1$, then $(a_1 \cdots a_r, m) = 1$.
+
+    \item If $(a_i, a_j) = 1$ for all $i \neq j$, and if $a_i \vert n$, then $a_1 \cdots a_r \vert n$.
+  \end{enumerate}
+\end{lem}
+
+\begin{prf}
+  \begin{enumerate}
+    \item By induction, it suffices to prove this for $r = 2$.
+
+    Use that we can write, $1 = x_1 a_1 + y_1 m = x_2 a_2 + y_2 m$ for some $x_1, y_1, x_2, y_2 \in \mathbb Z$.
+    Then 
+    \begin{align*}
+      1 &= (x_1 a_1 + y_1 m) (x_2 a_2 + y_2 m) \\ 
+      &= x_1 x_2 a_1 a_2 + k m & \text{where $k \in \mathbb Z$}.
+    \end{align*}
+    Then $(a_1 a_2, m) = 1$.
+
+    \item Use induction on $r$.
+    By induction, $a_1 \cdots a_{r - 1} \vert n$.
+    By part 1, $(a_1 \cdots a_{r - 1}, a_r) = 1$.
+    So we can write 
+    \[
+      1 = a_1 \cdots a_{r - 1} x + a_r y
+    \]
+    for some $x, y \in \mathbb Z$.
+    So (multiplying by $n$) 
+    \[
+      n = a_1 \cdots a_{r - 1} n x + a_r n y.
+    \]
+    Here $a_1 \cdots a_{r - 1} a_r \vert a_1 \cdots a_{r - 1} n x$ because $a_r \vert n$ and $a_1 \cdots a_{r - 1} a_r \vert a_r n y$ since $a_1 \cdots a_{r - 1} \vert n$.
+    So $a_1 \cdots a_r \vert n$.
+  \end{enumerate}
+\end{prf}
+
+\newpage
+
+\begin{thm}[Chinese remainder theorem]
+  Let $m_1, \dots, m_r$ be pairwise coprime positive integers.
+  Let $c_1, \dots, c_r \in \mathbb Z$.
+  Then there is an integer $x$ such that 
+  \begin{align*}
+    x &\equiv c_1\ (\mathrm{mod}\ m_1), \\ 
+    &\vdots \\ 
+    x & \equiv c_r\ (\mathrm{mod}\ m_r).
+  \end{align*}
+
+  Moreover, $x$ is unique modulo $m_1 \cdots m_r$.
+\end{thm}
+
+\begin{eg}
+  There is ans integer $x$ which is $\equiv 1\ (\mathrm{mod}\ 3)$ and $\equiv 3\ (\mathrm{mod}\ 4)$.
+\end{eg}
+
+\begin{eg}
+  There is no integer $x$ such that $x \equiv 5\ (\mathrm{mod}\ 8)$ (odd) and $x \equiv 4\ (\mathrm{mod}\ 12)$ (even).
+\end{eg}
+
+\begin{prf}
+  We first show existence.
+
+  Let $m = m_1 \cdots m_r$.
+  For $i = 1, \dots, r$, $n_i = \frac{m}{m_i} = \prod_{j \neq i} m_j$.
+
+  By the lemma, $(m_i, n_i) = 1$ for each $i$.
+  So we can write (for each $i$) $1 = d_i m_i + e_i n_i$ for some $d_i, e_i \in \mathbb Z$.
+  Let $b_i = e_i n_i$ for $i = 1, \dots, r$.
+  Then $1 = d_i m_i + b_i$ and for each $j \neq i$, $m_j \vert b$.
+
+  Here for each $1 \leq i \leq r$, $b_i$ is $\equiv 1\ (\mathrm{mod}\ m_i)$ and is $\equiv 0\ (\mathrm{mod}\ m_j)$ for each $j \neq i$.
+
+  Define $x := c_1 b_1 + \cdots c_r b_r$.
+
+  We then show uniqueness.
+  Suppose $y \in \mathbb Z$ also satisfies these $r$ congruences.
+  Then $x \equiv y\ (\mathrm{mod}\ m_i)$ for each $i$, so $m_i \vert x - y$ for each $i = 1, \dots, r$.
+  Since $m_1, \dots, m_r$ are pairwise coprime, Lemma~\ref{lem:5.2} implies $m_1 \cdots m_r \vert x - y$.
+  That is, $x \equiv y\ (\mathrm{mod}\ m_1 \cdots m_r)$.
+\end{prf}
+
+\underline{\smash{{\boldmath \bfseries Groups}}}
+
+\begin{defn}
+  A {\boldmath \bfseries group} $G$ is a set with an element $1 \in G$ (or $1_G$) and a function $\cdot \colon G \times G \to G$ such that 
+  \begin{enumerate}
+    \item it is associative: $\forall \, x, y, z \in G: (x y) z = x (y z) \in G$, 
+
+    \item $1$ is the identity: $\forall \, x \in G: 1 \cdot x = x \wedge x \cdot 1 = x$, and 
+
+    \item there are inverses: $\forall \, x \in G\; \exists \, y \in G: x y = 1 \wedge y x = 1$.
+  \end{enumerate}
+
+  If the group operation is {\boldmath \bfseries commutative} (\textit{i.e.} $\forall \, x, y \in G: x y = y x$), we call $G$ an {\boldmath \bfseries abelian group} (Niels Henrik Abel, ~1810).
+\end{defn}
+
+\begin{eg}[The permutation group]
+  Let $S$ be a set.
+  Define $\Sigma(S) := \left \{ f \colon S \to S : \text{$f$ is bijective} \right \}$.
+  This is a group under {\boldmath \bfseries composition} of functions.
+  That is, if $f, g \in \Sigma(S)$, define $f g \in \Sigma(S)$ by $(f g)(s) = f(g(s)) \in S$ for any $s \in S$.
+
+  The element $1 \in \Sigma(S)$ is the {\boldmath \bfseries identity} function, $1_{\Sigma(S)}(s) = s$ for every $s \in S$.
+
+  Inverses are given by: for $f \in \Sigma(s), f^{-1} \in \Sigma(S)$ is the function $f^{-1}(s) = \text{the unique element $t \in S$ such that $f(t) = s$}$.
+
+  {\boldmath \bfseries Proof of associativity for $\Sigma(S)$}
+
+  Let $f, g, h \in \Sigma(S)$, what is $(f g) h$ and $f (g h)$?
+
+  For any $s \in S$, 
+  \begin{align*}
+    ((f g) h)(s) &= (f g) (h(s)) \\ 
+    &= f(g(h(s))) \in S
+  \end{align*}
+  and 
+  \begin{align*}
+    (f (g h))(s) &= f((g h)(s)) \\ 
+    &= f(g(h(s))).
+  \end{align*}
+  So they are equal.
+
+  \begin{note}
+    If $\left | S \right | \geq 3$, then the group $\Sigma(S)$ is \textit{not} abelian.
+
+    \begin{defn}
+      For $n \in \mathbb Z^+$, the {\boldmath \bfseries symmetric group} $S_n$ means $\Sigma(\left \{ 1, 2, \dots, n \right \})$.
+    \end{defn}
+
+    {\boldmath \bfseries Proof that $S_3$ is not abelian}
+
+    Let $f, g \in S_3$ be $f(1) = 1$, $f(2) = 3$, $f(3) = 2$, and $g(1) = 2$, $g(2) = 1$, $g(3) = 3$.
+    Then $(f g)(1) = 3$, $(f g)(2) = 1$, $(f g)(3) = 2$, and $(g f)(1) = 2$, $(g f)(2) = 3$, $(g f)(3) = 1$.
+
+  \end{note}
+\end{eg}
+
+\begin{lem}
+  The inverse of an element $x$ in a group $G$ is unique so we can call it $x^{-1}$.
+  More strongly if $x y = 1 \in G$, then $y = x^{-1}$ (and so $y x = 1$).
+  Likewise, if $y x = 1$, then $y = x^{-1}$ (and so $x y = 1$).
+\end{lem}
+
+\begin{prf}
+  Suppose that $y$ and $z$ in $G$ are both inverses of $x$ in $G$.
+  Then $y = 1 \cdot y = (z x) y = z x y = z (x y) = z \cdot 1 = z$.
+  So $y = z$, \textit{i.e.}, the inverse is unique.
+
+  Next, suppose $y \in G$ with $x y = 1$.
+  Multiply both sides \textit{on the left}, we have $y = 1 \cdot y = (x^{-1} x) y = x^{-1} (x y) = x^{-1} \cdot 1 = x^{-1}$.
+  If $y x = 1$, then $(y x) x^{-1} = 1 \cdot x^{-1}$, so $y = x^{-1}$.
+\end{prf}
 
 \end{document}
