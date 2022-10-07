@@ -627,7 +627,7 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
 \end{thm}
 
 \begin{cor}
-  For positve integers $m_1, \dots, m_r$ that are pairwise coprime, there is a one-to-one correspondence $\mathbb Z / m \overset{\longrightarrow}{\simeq} (\mathbb Z / m_1) \times \cdots \times (\mathbb Z / m_r)$: $\overline a \mapsto (\overline a, \dots, \overline a)$.
+  For positve integers $m_1, \dots, m_r$ that are pairwise coprime, there is a one-to-one correspondence $\mathbb Z / m \overset{\longrightarrow}{\cong} (\mathbb Z / m_1) \times \cdots \times (\mathbb Z / m_r)$: $\overline a \mapsto (\overline a, \dots, \overline a)$.
 
   So we can mostly reduce studying $\mathbb Z / p_1^{e_1} \cdots p_r^{e_r}$ (with $p_1, \dots, p_r$ are \textit{distinct} primes, $e_1, \dots, e_r \geq 1$) to the ring $\mathbb Z / p_1^{e_1}, \dots, \mathbb Z / p_r^{e_r}$
 \end{cor}
@@ -853,7 +853,7 @@ One can check that $a^{m + n} = a^m a^n$ for all $a \in G$, $m, n \in \mathbb Z$
 \end{prf}
 
 \begin{rmk}
-  For an {\boldmath \bfseries abelian group}, we may write the opderation as $+$ (not $\cdot$ and he idendity element is $0$ no $1$) and the inverse operation is $x \in G \mapsto mi$
+  For an {\boldmath \bfseries abelian group}, we may write the opderation as $+$ (not $\cdot$ and he idendity element is $0$ no $1$) and the inverse operation is $x \in G \mapsto -x$
 \end{rmk}
 
 \begin{eg}
@@ -871,9 +871,213 @@ One can check that $a^{m + n} = a^m a^n$ for all $a \in G$, $m, n \in \mathbb Z$
   A {\boldmath \bfseries homomorphism $f \colon G \to H$ (of groups)} is a function from $G$ to $H$ such that $f(xy) = f (x) + f(y)$.
 \end{defn}
 
+\phantom{fix}
+
 \begin{defn}
-  An {\boldmath \bfseries isomorphism} of groups is a {\boldmath \bfseries bijection} homomorphism $f \colon G \to H$.
-  That is, if it is injective, for $x, y \in G$, if $f$
+  An {\boldmath \bfseries isomorphism} of groups is a {\boldmath \bfseries bijective} homomorphism $f \colon G \to H$.
+  That is, it is injective, or for $x, y \in G$, if $f(x) = f(y) \in H$, then $x = y$.
+
+  We say $G$ and $H$ are {\boldmath \bfseries isomorphic} if there is an isomorphism $f \colon G \to H$ (write $G \cong H$).
 \end{defn}
+
+\begin{eg}
+  We will classify all groups of order 2 up to isomorphism.
+  Such a group $G$ has elements $1, x$.
+  Then $1 \cdot 1 = 1$, $1 \cdot x = x$, and $x \cdot 1 = x$.
+  We claim that $x \cdot x = 1$.
+  Otherwise we have $x \cdot x = x$.
+  Multiplying on the right by $x^{-1}$, we get $x = 1$, a contradiction.
+  So \textit{every} group of order 2 is isomorphic to $(\mathbb Z / 2, +)$.
+\end{eg}
+
+\begin{eg}
+  We then classify all groups of order 3.
+  Such a group $G$ has elements $1, x, y$.
+  Note that $x y$ and $y x$ cannot be $x$ or $y$ since that would imply one of $x, y$ is equal to $1$.
+  Then $x y = y x = 1$.
+  Then $x \cdot x = y$ and $y \cdot y = x$.
+  Furthermore note that $x^3 = x^2 \cdot x = y x = 1$.
+  So \textit{every} group of order 3 is isomorphic to $\mathbb Z / 3$.
+  We see that $y = x^2$, so $G = \left \{ 1, x, x^2 \right \}$.
+\end{eg}
+
+\begin{defn}
+  A {\boldmath \bfseries subgroup $H$ of a group $G$} is a subset of $G$ such that 
+  \begin{enumerate}
+    \item $1_G \in H$, 
+
+    \item $\forall \, x, y \in H: x y \in H$, and 
+
+    \item $\forall \, x \in H: x^{-1} \in H$.
+  \end{enumerate}
+\end{defn}
+
+\begin{lem}
+  A subgroup of a group $G$ is a group (with the group operation of $G$, restricted to $H$).
+\end{lem}
+
+\begin{prf}
+  By (2), the product gives a function $\cdot \colon H \times H \to H$.
+  Clearly $(x y) z = x (y z)$ for all $x, y, z \in H$ by the same fact for $G$.
+  Also, $1_G \in H$, so $1_G x = x 1_G = x$ for all $x \in H$.
+  Inverses are given by (3).
+\end{prf}
+
+\begin{eg}
+  For any field $\mathbb F$ and any $n \in \mathbb Z^+$, the {\boldmath \bfseries general linear group $GL(n, \mathbb F)$} is the group of \textit{invertible $n \times n$ matrices over $\mathbb F$} is a group (under multiplication) $\left \{ A \in M(n, \mathbb F) : \det A \neq 0 \in F \right \}$.
+\end{eg}
+
+\newpage
+
+\section{10.7 Friday Week 2}
+
+\begin{defn}
+  The {\boldmath \bfseries general linear group $GL(n, \mathbb F)$} for $n \in \mathbb Z^+$, $F$ a field, is the set of \textit{invertible} $n \times n$ matrices over $F$, with group operation multiplication of matrices.
+\end{defn}
+
+Note that the identity is given by  $1 = \begin{bmatrix} 1 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & 1 \end{bmatrix}$.
+
+Why is matrix multiplication associative?
+
+A matrix $A \in M(n, \mathbb F)$ defines an $F$-linear map $F^n \to F^n := \underbrace{F \times \cdots \times F}_\text{$n$ copies}$ by 
+\[
+  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} a x + b y \\ c x + d y \end{bmatrix}.
+\]
+Matrix multiplication corresponds to the \textit{composing} of these linear maps.
+That explains why $A (B C) = (A B) C$.
+
+Another way to say this is that $GL(n, \mathbb F)$ is a subgroup of $\sum (F^n)$ the permutation group
+
+\begin{eg}
+  Rotation in $\mathbb R^2$ by $\theta$: 
+  \[
+    \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}
+  \]
+\end{eg}
+
+\begin{eg}
+  Reflection across the $x$-axis: 
+  \[
+    \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}
+  \]
+\end{eg}
+
+\begin{eg}
+  The {\boldmath \bfseries special linear group $SL(n, \mathbb F) = \left \{ A \in GL(n, \mathbb F) : \det A = 1 \right \}$} is a subgroup of $GL(n, \mathbb F)$ since $\det(A B) = (\det A) (\det B)$.
+
+  Geometrically, $SL(n, \mathbb R)$ is the subgroup of $GL(n, \mathbb R)$ of \textit{volume-preserving} linear maps (and orientation-preserving).
+\end{eg}
+
+\begin{eg}
+  The {\boldmath \bfseries orthogonal group $O(n) := O(n, \mathbb R) = \left \{ A \in M(n, \mathbb R) : A (A^\mathsf T) = I \right \}$} is a subgroup of $GL(n, \mathbb R)$.
+
+  This is the set of \textit{length-preserving} linear maps.
+  Examples include rotations and reflections.
+\end{eg}
+
+\begin{eg}
+  The {\boldmath \bfseries special orthogonal group $SO(n) := O(n) \cap SL(n, \mathbb R)$} is a subgroup of $GL(n, \mathbb R)$.
+
+  Reflections $\not \in SO(n)$.
+\end{eg}
+
+\begin{eg}
+  $D(n, \mathbb F) := \text{subgroup of \textit{diagonal matrices} in $GL(n, \mathbb F)$} = \left \{ \begin{bmatrix} a_1 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & a_n \end{bmatrix} : a_1, \dots, a_n \in F^* \right \}$. Note that $\det = a_1 \cdots a_n$.
+\end{eg}
+
+\begin{rmk}
+  This is an {\boldmath \bfseries abelian} group.
+\end{rmk}
+
+\begin{eg}
+  $UT(n, \mathbb F) := \text{group of invertible upper-triangular matrices in $GL(n, \mathbb F)$}$ \\ $= \left \{ \begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ 0 & \cdots & a_{nn} \end{bmatrix} : a_{ij} \in F, a_{ii} \neq 0 \right \}$.
+
+  Geometrically, $UT(n, \mathbb F)$ is the subgroup of $GL(n, \mathbb F)$ that preserves the standard \textit{flag} in $F^n$: $0 \subseteq F \subseteq F^2 \subseteq \cdots \subseteq F^n$.
+\end{eg}
+
+\begin{eg}
+  $SUT(n, \mathbb F) := \text{group of strictly upper-triangular matrices in $GL(n, \mathbb F)$} = \left \{ \begin{bmatrix} 1 & \cdots & * \\ \vdots & \ddots & \vdots \\ 0 & \cdots & 1 \end{bmatrix} : * \in F \right \}$.
+\end{eg}
+
+\begin{defn}
+  For a subset $S$ of a group $G$, the {\boldmath \bfseries subgroup $\left \langle S \right \rangle$ generated by $S$} is the intersection of all subgroups of $G$ that contain $S$.
+\end{defn}
+
+It is easy to show that \textit{any} intersection of subgroups of $G$, even infinitely many, is a subgroup.
+
+\begin{lem}
+  For a group $G$ and a subset $S$, the subgroup $\left \langle S \right \rangle \subseteq G$ is the set of elements of $G$ that can be written as $a_1^{\pm 1}, \dots, a_n^{\pm 1}$ for some $n \geq 0$ and $a_1, \dots, a_n \in S$ (and some signs).
+\end{lem}
+
+\begin{prf}
+  \textit{Exercise on homework 3.}
+\end{prf}
+
+\begin{rmk}
+  If $n = 0$, we interpret $a_1^{\pm 1}, \dots, a_n^{\pm 1}$ as being $1 \in G$.
+\end{rmk}
+
+\begin{defn}
+  A group $G$ is {\boldmath \bfseries finitely generated} if there is a finite subset $S \subseteq G$ with $G = \left \langle S \right \rangle$.
+\end{defn}
+
+\begin{defn}
+  A group $G$ is {\boldmath \bfseries cyclic} if $G = \left \langle a \right \rangle$ for some $a \in G$.
+\end{defn}
+
+\begin{eg}
+  The group $\mathbb Z$ ($= (\mathbb Z, +)$) is infinite but finitely generated (in fact cyclic) since $G = \left \langle 1 \right \rangle$.
+
+  Also the additive group $\mathbb Z / m$ is cyclic, for any $m \in \mathbb Z^+$, since $\mathbb Z / m = \left \langle 1 \right \rangle$.
+\end{eg}
+
+\begin{thm}[Classification of cyclic groups]
+  Let $G$ be a cyclic group.
+  That is, there is an $a \in G$ such that $G = \left \langle a \right \rangle$.
+  Then $G$ is isomorphic to either $\mathbb Z$ or to $\mathbb Z / m$ for some $m \in \mathbb Z^+$.
+  So if $G$ is infinite cyclic, then $G \cong \mathbb Z$, and if $G$ has $m$ elements, then $G \cong \mathbb Z / m$.
+\end{thm}
+
+\begin{prf}
+  Define a function $f \colon \mathbb Z \to G$ by $f(n) = a^n \in G$.
+  Because $a^{m + n} = a^m a^n$, $f$ is a homomorphism (thatis, $f(m + n) = f(m) f(n) \in G$ for all $m, n \in \mathbb Z$).
+  Since $G = \left \langle a \right \rangle$, $f \colon \mathbb Z \to G$ is \textit{surjective}.
+  
+  Consider the {\boldmath \bfseries kernel} of $f$, $H := \ker(f) = \left \{ m \in \mathbb Z : f(m) = 1 \right \}$.
+  This is a \textit{subgroup} of $\mathbb Z$.
+  
+  Suppose that $H = \left \{ 0 \right \}$.
+  Then we claim that $f$ is \textit{injective} as well as surjective (so $f$ is an isomorphism).
+  Suppose $m, n \in \mathbb Z$ with $f(m) = f(n)$.
+  Then $f(m - n) = f(m) f(n)^{-1} = 1$.
+  So $m - n \in H$.
+  So $m - n = 0$, \textit{i.e.}, $m = n$.
+  So $f$ is injective.
+
+  Otherwise $H \neq \left \{ 0 \right \}$.
+  Then $H$ must contain some \textit{positive} integer.
+  So we can define $n$ to be the smallest positive integer in $H$ (by well-ordering).
+  Then we can define a homomorphism $\overline f \colon \mathbb Z / n \to G$ by $\overline f\left ( \overline i \right ) = f(i) \in G$ for $i \in \mathbb Z$, where $\overline i$ is the equivalence class of $i$.
+  This makes sense because if $i \equiv j\ (\mathrm{mod}\ n)$, then $f(i) = f(j) \in G$.
+  Indeed, since $f(j) = f(i) f(j - i) = f(i)$.
+  This function, $\overline f \colon \mathbb Z / n \to G$, is also a homomorphism since $\overline f\left ( \overline i + \overline j \right ) = f(i + j) = f(i) f(j) = \overline f\left ( \overline i \right ) \overline f\left ( \overline j \right )$.
+  It is surjective since $f$ was surjective.
+
+  We claim that $\overline f$ is also injective (hence an isomorphism).
+  Suppose there are $\overline i, \overline j \in \mathbb Z / n$ with $\overline f\left ( \overline i \right ) = \overline f\left ( \overline j \right ) \in G$.
+  Since $\overline f$ is a homomorphism, this means $\overline f\left ( \overline i - \overline j \right ) = 1 \in G$.
+  So $f(i - j) = 1 \in G$.
+  So $i - j \in H = \left \{ m \in \mathbb Z : m \equiv 0\ (\mathrm{mod}\ n) \right \}$.
+  So $\overline i = \overline j$.
+  So $f$ is injective.
+
+  To show that $H = \left \{ m \in \mathbb Z : m \equiv 0\ (\mathrm{mod}\ n) \right \}$, let $m \in H$.
+  By division, we can write $m = q n + r$ for some $q \in \mathbb Z$ and $r \in \left \{ 0, 1, \dots, n - 1 \right \}$.
+  Note that $q n \in H$ since $n \in H$.
+  Then $r \in H$.
+  But $n$ is the \textit{smallest} positive integer in $H$.
+  So $r = 0$.
+  So $m \equiv 0\ (\mathrm{mod}\ n)$.
+\end{prf}
 
 \end{document}
