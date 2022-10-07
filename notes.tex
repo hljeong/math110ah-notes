@@ -806,4 +806,74 @@ Next, $21 = 7 \cdot 3 + 0$, so $\gcd(3, 21) = \gcd(0, 3) = 3$.
   If $y x = 1$, then $(y x) x^{-1} = 1 \cdot x^{-1}$, so $y = x^{-1}$.
 \end{prf}
 
+\newpage
+
+\section{10.5 Wednesday Week 2}
+
+\begin{lem}
+  The identity element in a group $G$ is unique.
+  More strongly, if there are elements $e, x \in G$ such that $e x = x$, then $e = 1$.
+  (Likewise, if $x e = x$, then $e = 1$.)
+\end{lem}
+
+\begin{prf}
+  Given $e, x \in G$ with $e x = x$, multiply on the \textit{right} by $x^{-1}$ and we get $e = e x x^{-1} = x x^{-1} = 1$.
+
+  For the other direction, if $x e = x$, then, multiplying by $x^{-1}$ on the \textit{left}, we have $e = x^{-1} x e = x^{-1} x = 1$.
+\end{prf}
+
+\begin{lem}
+  For any elements $x, y$ in a group $G$, $(x y)^{-1} = y^{-1} x^{-1}$. 
+\end{lem}
+
+\begin{prf}
+  As we showed, it suffices to show that $(x y) y^{-1} x^{-1} = 1$.
+  By associativity, $(x y) y^{-1} x^{-1} = x (y y^{-1}) x^{-1} = x \cdot 1 \cdot x^{-1} = x x^{-1} = 1$.
+  So $(x y)^{-1} = y^{-1} x^{-1}$.
+\end{prf}
+
+\begin{defn}
+  For an element $a$ in a group $G$ and $n \in \mathbb Z^+$ define $a^n := \underbrace{a \cdots a}_\text{$n$ times} \in G$.
+  (This makes sense by associativity.)
+
+  Also, define $a^0 = 1$ (for any $a \in G$).
+  Also, for $m \in \mathbb Z^+$, define $a^{-m} := (a^{-1})^m$.
+\end{defn}
+
+One can check that $a^{m + n} = a^m a^n$ for all $a \in G$, $m, n \in \mathbb Z$.
+
+\begin{lem}
+  The {\boldmath \bfseries cancellation laws} hold in a group $G$: given $a, b, c \in G$ such that $a b = a c$, then $b = c$.
+  Also if $b a = c a$, then $b = c$.
+\end{lem}
+
+\begin{prf}
+  Given $a, b, c \in G$ with $a b = a c$, multiply on the \textit{left} by $a^{-1}$, and we get $b = a^{-1} (a b) = a^{-1} (a c) = c$.
+  Liksewise for the other direction.
+\end{prf}
+
+\begin{rmk}
+  For an {\boldmath \bfseries abelian group}, we may write the opderation as $+$ (not $\cdot$ and he idendity element is $0$ no $1$) and the inverse operation is $x \in G \mapsto mi$
+\end{rmk}
+
+\begin{eg}
+  Any commutative ring is a group {\boldmath \bfseries under addition}.
+  Enamples: $\mathbb Z$, $\mathbb Q$, $\mathbb R$, $\mathbb C$, $\mathbb Z / m$ for any $m \in \mathbb Z^+$
+\end{eg}
+
+\begin{eg}
+  For a commutative ring $R$, the subset $R^*$ of {\boldmath \bfseries units} in $R$ is abelian under multiplication.
+  (If $a, b \in R^*$) then $a b \in R^*$ since $(a b) b^{-1} a^{-1} = 1$, by the axioms of a ring.
+\end{eg}
+
+\begin{defn}
+  Let $G, H$ be groups.
+  A {\boldmath \bfseries homomorphism $f \colon G \to H$ (of groups)} is a function from $G$ to $H$ such that $f(xy) = f (x) + f(y)$.
+\end{defn}
+
+\begin{defn}
+  An {\boldmath \bfseries isomorphism} of groups is a {\boldmath \bfseries bijection} homomorphism $f \colon G \to H$.
+  That is, if it is injective, for $x, y \in G$, if $f$
+\end{defn}
+
 \end{document}
