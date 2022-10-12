@@ -1254,4 +1254,171 @@ We claim that we must have $j = 0$.
   The elements of $S_4$ are $1, (a\ b), (a\ b\ c), (a\ b\ c\ d), (a\ b) (c\ d)$ such as $(1\ 2) (3\ 4)$ or $(1\ 4) (2\ 3)$ or $(1\ 3) (2\ 4)$.
 \end{eg}
 
+\newpage
+
+\section{10.12 Wednesday Week 3}
+
+\underline{\smash{{\boldmath \bfseries Computing in the symmetric group $S_n$}}}
+
+\begin{eg}
+  What is $(1\ 2) (2\ 3)$ in $S_3$?
+  Note that $f \in S_3$ is a bijective function $\left \{ 1, 2, 3 \right \} \to \left \{ 1, 2, 3 \right \}$ and $(f g)(x) = f(g(x))$ for $x \in \left \{ 1, 2, 3 \right \}$.
+
+  We can write this as a \textit{product} of \textit{disjoint} cycles: $(1\ 2\ 3)$, given by $(1\ 2) (2\ 3)[1] = (1\ 2)[1] = 2$ and so on.
+\end{eg}
+
+\begin{eg}
+  What is $(2\ 3) (1\ 2)$ in $S_3$?
+
+  $(3\ 2\ 1) = (1\ 3\ 2)$.
+  We can see again that $S_3$ is \textit{not} abelian.
+\end{eg}
+
+\begin{eg}
+  What is $(1\ 2\ 3)^2$ in $S_3$?
+
+  $(1\ 3\ 2)$.
+\end{eg}
+
+\begin{eg}
+  What is $(1\ 2\ 3)^3$ in $S_3$?
+
+  $1$.
+\end{eg}
+
+\begin{defn}
+  The {\boldmath \bfseries order} of an element $a$ in a group $G$ is the order of the cyclic group $\left \langle a \right \rangle \subseteq G$.
+  This could be finite or infinite: 
+  \begin{itemize}
+    \item $a \in G$ has \textit{inifinite order} iff $a^n \neq 1$ for all $n \in \mathbb Z^+$, and 
+
+    \item $a \in G$ has order $n \in \mathbb Z^+$ iff $a^n = 1$ but $a^j \neq 1$ for $1 \leq j \leq n - 1$.
+    In this case, $\left \langle a \right \rangle = \left \{ 1, a, a^2, \dots, a^{n - 1} \right \}$ with $a^n = 1$.
+  \end{itemize}
+\end{defn}
+
+So, in $S_3$, $1$ has order $1$, $(1\ 2)$ and $(1\ 3)$ and $(2\ 3)$ have order $2$, and $(1\ 2\ 3)$ and $(1\ 3\ 2)$ have order $3$.
+
+\underline{\smash{{\boldmath \bfseries Cosets}}}
+
+Let $G$ be a group, $H \subseteq G$ a subgroup.
+Define an equivalence relation on $G$ by $g_1 \sim g_2$ in $G$ iff $\exists \, h \in H: g_2 = g_1 h$.
+
+\begin{lem}
+  This is an equivalence relation on $G$.
+\end{lem}
+
+\begin{prf}
+  Reflexivity: $g_1 \sim g_1 \cdot 1 = g_1$ and $1 \in H$.
+
+  Symmetry: If $g_1 \sim g_2$ then there is $h \in H$ with $g_2 = g_1 h$.
+  Multiplying on the right by $h^{-1}$, we get $g_2 h^{-1} = g_1$.
+  So $g_2 \sim g_1$.
+
+  Transitivity: If $g_1 \sim g_2$ and $g_2 \sim g_3$ then $\exists \, h, k \in H: g_2 = g_1 h, g_3 = g_2 k$.
+  So $g_3 = (g_1 h) k = g_1 (h k)$ where $h k \in H$ since $H$ is a subgroup.
+  So $g_1 \sim g_3$.
+\end{prf}
+
+\begin{eg}
+  For $G = \mathbb Z$ and $H = \left \langle m \right \rangle$ for some $m \in \mathbb Z^+$, this equivalence relation is exactly $\equiv (\mathrm{mod}\ m)$.
+\end{eg}
+
+\begin{defn}
+  Let {\boldmath \bfseries $G / H$} be the set of equivalence classes for this relation.
+  For an element $a \in H$, the equivalence class $\overline a$ of $a$ is the subset $a H := \left \{ a h : h \in H \right \}$.
+\end{defn}
+
+Note that if $a_1 \sim a_2$ then $a_1 H = a_2 H$.
+As always with equivalence relations, $G = \bigsqcup_{S \in G / H} S$.
+So, if $G$ is \textit{finite}, $\left | G \right | = \sum_{S \in G / H} \left | S \right |$.
+
+\begin{prop}
+  For any group $G$ and a subgroup $H \subseteq G$, and any $a \in G$, there is a \textit{bijection} between the coset $a H$ and $H$. 
+\end{prop}
+
+\begin{prf}
+  Define a function $f \colon H \to a H$ by $f(h) = a h$.
+  It is clear that $f$ is \textit{surjective}.
+  To show $f$ is also \textit{injective}, suppose $h_1, h_2 \in H$ such that $f(h_1) = f(h_2)$.
+  that is, $a h_1 = a h_2$.
+  Then $h_1 = h_2$ by cancellation.
+  So $f$ is bijective.
+\end{prf}
+
+\begin{defn}
+  For a subgroup $H$ of a group $G$, the \textit{index} of $H$ in $G$, written $[G : H]$, means the order of the set $G / H$.
+\end{defn}
+
+\begin{note}
+  In general, $G / H$ is just a \textit{set}, not a group.
+\end{note}
+
+\begin{thm}[Lagrange, 18th century]
+  Let $G$ be a \textit{finite} group anf $H$ a subgroup.
+  Then $\left | H \right | = \left | H \right | [G : H]$.
+  
+  In particular, $\left | H \right |$ divided $\left | G \right |$.
+\end{thm}
+
+\begin{prf}
+  Note that $\left | G \right | = \sum_{S \in G / H} \left | S \right | = \sum_{S \in G / H} \left | H \right | = \left | H \right | [G : H]$.
+\end{prf}
+
+\begin{cor}
+  For a finite group $G$ and any element $a \in G$, the order of $a$ divides $G$.
+\end{cor}
+
+\begin{prf}
+  Immediate frmo Langrange's theorem, since we \textit{defined} the order of $a \in G$ to be the order of the subgroup $\left \langle a \right \rangle \subseteq G$.
+\end{prf}
+
+\begin{cor}
+  Let $G$ be any group of \textit{prime} order.Then $G$ is cyclic and so $G \cong \mathbb Z / p$.
+\end{cor}
+
+\begin{prf}
+  Since $p > 1$, we can choose an element $a \in G$ with $a \neq 1 \in G$.
+  Then the order of $\left \langle a \right \rangle$ divides $\left | G \right | = p$.
+  Since $\left \langle a \right \rangle$ contains $1$ and $a \neq 1$, it must have order $p$.
+  So $G = \left \langle a \right \rangle$.
+\end{prf}
+
+Recall that for a commutative ring $R$, $R^* = \text{the group of units of $R$} = \left \{ a \in R : \exists \, b \in R: a b = 1 \in R \right \}$.
+
+\begin{defn}
+  The {\boldmath \bfseries Euler phi function} is: for $m \in \mathbb Z^+$, $\varphi(m) = \left | (\mathbb Z / m)^* \right |$.
+  As we have showed, the units in $\mathbb Z / m$ are exactly $\left \{ \overline a : a \in \mathbb Z, \gcd(a, m) = 1 \right \}$.
+\end{defn}
+
+\begin{cor}
+  Let $m, n$ be relatively prime positive integers.
+  Then $n^{\varphi(m)} \equiv 1\ (\mathrm{mod}\ m)$.
+\end{cor}
+
+\begin{prf}
+  We can think of $n$ as an element of $(\mathbb Z / m)^*$.
+  Here $(\mathbb Z / m)^*$ is an abelian group of order $\varphi(m)$.
+  We know that the order of $n$ in this group $k = (\mathbb Z / m)^*$ divides $\left | (\mathbb Z / m)^* \right | = \varphi(m)$.
+  Then $\varphi(m)$ is a multiple of $k$.
+  Therefore $n^{\varphi(m)} \equiv 1 \in (\mathbb Z / m)^*$.
+\end{prf}
+
+\begin{cor}[Fermat's little theorem, 17th century]
+  For a prime number $p$ and any integer $n$, $n^p \equiv n\ (\mathrm{mod}\ p)$.
+  
+  Also if $p \nmid n$ then $n^{p - 1} \equiv 1\ (\mathrm{mod}\ p)$.
+\end{cor}
+
+\begin{prf}
+  Let $m = p$ in Corollary~\ref{cor:9.15}.
+  That shows for an integer $n$ not a multiple of $p$, we have $n^{\varphi(p) \equiv 1\ (\mathrm{mod}\ p)}$.
+  Recall $\mathbb Z / p$ is a \textit{field} since $p$ is prime.
+  So $(\mathbb Z / p)^* = \left \{ 1, 2, \dots, p - 1 \right \}$.
+  So $\varphi(p) = \left | (\mathbb Z / p)^* \right | = p - 1$.
+  So $n^{p - 1} \equiv 1\ (\mathrm{mod}\ p)$.
+  
+  For the first part, if $p \nmid n$ then $n^p \equiv \left ( n^{p - 1} \right ) n \equiv 1 \cdot n \equiv n\ (\mathrm{mod}\ p)$, and if $p \mid n$ then $n^p \equiv 0 \equiv n\ (\mathrm{mod}\ p)$.
+\end{prf}
+
 \end{document}
